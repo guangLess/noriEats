@@ -20,25 +20,15 @@ ref.set({
   .catch(error => console.log('Got an error: ', error))
 */
 
-
 //console.log(' hello ref ===', ref)
-//ref.doc('apple').get().then(snapshot => {
-    //console.log("snap====>", snapshot.data())
-   // if (snapshot && snapshot.exists){
-    //   snapshot.forEach( doc => {
-    //     const data = doc.data()
-    //     console.log('recieved data =', data, doc.id)
-    //   })
-    //}
-//}).catch(console.log)
-
-
 // const apple =  ref.where('name', '==', 'apple').get()
 // .then(snap => {
 //     console.log(snap)
 // })
 // console.log('====>>>', apple)
 
+
+//adding stuff to test
 //doc apple
 const onion = 'onion'
 const onionData = {
@@ -73,7 +63,17 @@ const greenbeanData = {
     url: 'https://www.cesarsway.com/dog-care/nutrition/dog-approved-people-food'
 }
 
-
+/*
 ref.doc(apple).set(appleData)
 ref.doc(greenbean).set(greenbeanData)
 ref.doc(onion).set(onionData)
+*/
+
+//test get methods
+let docRef = ref.doc(apple)
+let getApple = docRef.get().then(doc => {
+    if (!doc.exists) console.log('can not find it?')
+    else console.log("--🍎 🍏-->", doc.data())
+}).catch(console.error)
+
+//TODO: figure out emojis queries sometime
