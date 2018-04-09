@@ -8,17 +8,32 @@ var serviceAccount = require("../clientCert/noriSleepsInFireKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://norisleeps.firebaseio.com",
-});
+})
 
 const firestore = admin.firestore();
 const ref = firestore.collection('food')
 
 /*
-ref.set({
-      status: 'sleeping🤮ZZ🤲ZZ'
-  }).then( (data) => console.log("Satus saved -->", data))
-  .catch(error => console.log('Got an error: ', error))
+//test get methods
+let docRef = ref.doc('apple')
+let getApple = docRef.get().then(doc => {
+    if (!doc.exists) console.log('can not find it?')
+    else console.log("--🍎 🍏-->", doc.data())
+}).catch(console.error)
 */
+
+const appleRequestTest = (name, callback) => {
+    let docRef = ref.doc('apple')
+    docRef.get().then(doc => {
+        if (!doc.exists) console.log('can not find it?')
+        else {
+            console.log("--🍏-->")//, doc.data())
+            callback(doc.data())
+        } 
+    }).catch(console.error)
+}
+
+module.exports = {appleRequestTest}
 
 //console.log(' hello ref ===', ref)
 // const apple =  ref.where('name', '==', 'apple').get()
@@ -29,7 +44,7 @@ ref.set({
 
 
 //adding stuff to test
-//doc apple
+/*
 const onion = 'onion'
 const onionData = {
     name: ' onion',
@@ -68,12 +83,5 @@ ref.doc(apple).set(appleData)
 ref.doc(greenbean).set(greenbeanData)
 ref.doc(onion).set(onionData)
 */
-
-//test get methods
-let docRef = ref.doc(apple)
-let getApple = docRef.get().then(doc => {
-    if (!doc.exists) console.log('can not find it?')
-    else console.log("--🍎 🍏-->", doc.data())
-}).catch(console.error)
 
 //TODO: figure out emojis queries sometime
