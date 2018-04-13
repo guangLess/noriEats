@@ -1,3 +1,5 @@
+import App from "./app"
+
 console.log('webpack entry point🍯')
 
 const arr = [5,4,3]
