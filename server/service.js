@@ -1,11 +1,33 @@
 const express = require('express')
 const session = require('express-session')
+const cookieSession = require('cookie-session')
 const {resolve, join} = require('path')
-
 const app = express()
-const cookie = {secret: 'token-key', cookie: { maxAge: 5000 }}
-app.use(session({cookie}))
+const expireTime = 365 * 24 * 60 * 60 * 1000 // one year 
+/*
+const sess = {
+    secret: 'cookie_secret',
+    name: 'cookie_name',
+    //store: sessionStore,
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
+}//{secret: 'token-key-dog', cookie: { maxAge: expireTime }}
 
+
+if (app.get('env') === 'production') {
+    app.set('trust proxy', 1)
+    sess.cookie.secure = true
+}
+
+app.use(session({sess}))
+*/
+
+app.use(cookieSession({
+    name: 'dog session',
+    keys: ['123'],
+    maxAge: expireTime
+}))
 
 module.exports = app
     .use(express.static(resolve(__dirname, '..', 'dist')))
