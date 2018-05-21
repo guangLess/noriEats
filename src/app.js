@@ -6,6 +6,9 @@ import ReactDom from 'react-dom'
 //     .then(callback(resJson))
 // }
 
+//TODO: inplement API clint side request, add a big form, add auth login from firebase
+
+
 class App extends Component{
     constructor(props){
         super()

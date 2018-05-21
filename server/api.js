@@ -24,4 +24,11 @@ route.get('/:name', (req, res, next) => {
     })
 })
 
+route.use(errorHandler)
+
+function errorHandler (err, req, res, next) {
+    res.status(500)
+    res.render('the path to find infomation has failed, error', {error: err})
+}
+
 module.exports = route
