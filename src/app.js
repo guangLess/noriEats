@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactDom from 'react-dom'
+import {getFoodResult} from './networkRequest'
 
 // const getAppleTest = (callback) => {
 //     fetch('/api/apple').then(res => res.json())
@@ -17,15 +18,15 @@ class App extends Component{
         }
     }
     componentDidMount() {
-        fetch('/api/apple')
-        .then(res => res.json())
-        .then(resJson => {
-            console.log("----->", resJson)
+        //localStorage.setItem('nori', 'eats apple')
+        /*
+        getFoodResult('apple', callback => {
+            console.log('---->', callback)
             this.setState({
-                content: JSON.stringify(resJson)
+                content: JSON.stringify(callback)
             })
         })
-        //localStorage.setItem('nori', 'eats apple')
+        */
     }
     render(){
       return (

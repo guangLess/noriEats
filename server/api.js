@@ -7,8 +7,7 @@ route.get('/', (req, res, next) => {
     const sessionData = req.session
     sessionData.content = "DOG "
     */
-   //req.session.name = "apples!"
-
+     //req.session.name = "apples!"
     //console.log("req.session --->", req.session.name)
     res.send('hello ori 🧚 eats 🍎🍌🥕🥒🥦🍯' + "\n name ️🕴 : " + req.session.name)
 })
@@ -17,9 +16,9 @@ route.get('/:name', (req, res, next) => {
     const name = req.params.name
     // const seesionContent = req.session.content
     //const string =  ' 🧚 == ' + name
-    //console.log("name:", name + seesionContent) 
+    console.log("name:", name) 
     appleRequestTest(name, callback => {
-        //console.log('--🍎-->', callback)
+        //console.log('--🍎-->')
         res.send(callback)
     })
 })

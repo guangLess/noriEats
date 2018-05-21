@@ -23,13 +23,15 @@ let getApple = docRef.get().then(doc => {
 */
 
 const appleRequestTest = (name, callback) => {
-    let docRef = ref.doc('apple')
+    let docRef = ref.doc(name)
     docRef.get().then(doc => {
-        if (!doc.exists) console.log('can not find it?')
+        if (!doc.exists) {
+         callback('can not find such foodie item, flag us to add it :D')//console.log('can not find it?')
+        }
         else {
             console.log("--🍏-->")//, doc.data())
             callback(doc.data())
-        } 
+        }
     }).catch(console.error)
 }
 
