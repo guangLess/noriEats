@@ -7,9 +7,9 @@ route.get('/', (req, res, next) => {
     const sessionData = req.session
     sessionData.content = "DOG "
     */
-   req.session.name = "apples!"
+   //req.session.name = "apples!"
 
-    console.log("req.session --->", req.session.name)
+    //console.log("req.session --->", req.session.name)
     res.send('hello ori 🧚 eats 🍎🍌🥕🥒🥦🍯' + "\n name ️🕴 : " + req.session.name)
 })
 

@@ -1,12 +1,10 @@
-import React, {Component} from "react"
-import ReactDom from "react-dom"
- 
+import React, {Component} from 'react'
+import ReactDom from 'react-dom'
 
-const getAppleTest = (callback) => {
-    fetch('/api/apple').then(res => res.json())
-    .then(callback(resJson))
-}
-
+// const getAppleTest = (callback) => {
+//     fetch('/api/apple').then(res => res.json())
+//     .then(callback(resJson))
+// }
 
 class App extends Component{
     constructor(props){
@@ -16,26 +14,25 @@ class App extends Component{
         }
     }
     componentDidMount() {
-        fetch('/api/apple').then(res=> {
-            console.log(res.json())
+        fetch('/api/apple')
+        .then(res => res.json())
+        .then(resJson => {
+            console.log("----->", resJson)
+            this.setState({
+                content: JSON.stringify(resJson)
+            })
         })
-        // .then(resJson => {
-        //     this.setState({
-        //         content: resJson.message
-        //     })
-        // })
+        //localStorage.setItem('nori', 'eats apple')
     }
     render(){
-        return(
-       <div>
-        <p> New York hello 😇 front, nori likes apples. </p>
-        <h1>content: {this.state.content}</h1>
+      return (
+        <div>
+            <p> New York hello 😇 front, nori likes apples. </p>
+            <p>content: {this.state.content}</p>
         </div>
         )
     }
 }
-
-
 
 // const App = () => {
 //     return (
@@ -43,9 +40,8 @@ class App extends Component{
 //         <p> New York hello 😇 front, nori likes apples. </p>
 //         </div>
 //     )
-
 // }
 
 export default App
 
-ReactDom.render(<App />, document.getElementById("app"))
+ReactDom.render(<App />, document.getElementById('app'))
